@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timetable</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td:hover {
+            background-color: #f5f5f5;
+            position: relative;
+        }
+        /* Tooltip container */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+        /* Tooltip text */
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: left;
+            border-radius: 5px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position above the cell */
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: pre-wrap;
+        }
+        /* Tooltip arrow */
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+        /* Show tooltip on hover */
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Class Timetable for <%= className %></h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Period 1</th>
+                <th>Period 2</th>
+                <th>Period 3</th>
+                <th>Period 4</th>
+                <th>Period 5</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(row => { %>
+            <tr>
+                <td><%= row.day %></td>
+                <td>
+                    <div class="tooltip">
+                        <%= row.period1 %>
+                        <div class="tooltiptext">
+                            <strong>Teacher:</strong> <%= row.period1_teach %><br>
+                            <strong>Room:</strong> <%= row.period1_room %>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="tooltip">
+                        <%= row.period2 %>
+                        <div class="tooltiptext">
+                            <strong>Teacher:</strong> <%= row.period2_teach %><br>
+                            <strong>Room:</strong> <%= row.period2_room %>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="tooltip">
+                        <%= row.period3 %>
+                        <div class="tooltiptext">
+                            <strong>Teacher:</strong> <%= row.period3_teach %><br>
+                            <strong>Room:</strong> <%= row.period3_room %>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="tooltip">
+                        <%= row.period4 %>
+                        <div class="tooltiptext">
+                            <strong>Teacher:</strong> <%= row.period4_teach %><br>
+                            <strong>Room:</strong> <%= row.period4_room %>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="tooltip">
+                        <%= row.period5 %>
+                        <div class="tooltiptext">
+                            <strong>Teacher:</strong> <%= row.period5_teach %><br>
+                            <strong>Room:</strong> <%= row.period5_room %>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <script src="/index.js"></script>
+</body>
+</html>
